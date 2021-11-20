@@ -1,8 +1,4 @@
 // Assignment code here
-var lowerCaseConfirm
-var upperCaseConfirm
-var numberConfirm
-var specialConfirm
 
 //lowercase array
 lowerCaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -43,23 +39,16 @@ else if (passwordLength == null && passwordLength == "") {
   return;
 }
 
-//if field is left blank, inform and restart
 else if (passwordLength == "") {
   console.log(passwordLength);
   window.alert("Error! You didn't enter anything.")
   writePassword();
 }
 
-//if string contains spaces, inform and restart
-else if (/\s+/.test(passwordLength)) {
-  window.alert ("Error! Do not use spaces.")
-  writePassword();
-}
-
 //if length chosen is too big or too small, inform user and return them to the first prompt
 else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null && passwordLength !== 0 || passwordLength > 128 && passwordLength !== "" && passwordLength !== null && passwordLength !== 0) {
-  console.log(passwordLength)
-  window.alert("Error! Number is too large or too small.")
+  console.log(passwordLength);
+  window.alert("Error! Number is too large or too small.");
   writePassword();
 }
 };
@@ -67,39 +56,25 @@ else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null 
 characterSelect = function () {
 //user now must confirm what types of characters they want
   lowerCaseConfirm = window.confirm("Do you want lowercase characters?");
-  console.log(lowerCaseConfirm)
   upperCaseConfirm = window.confirm("Do you want UPPERCASE characters?");
-  console.log(upperCaseConfirm)
   numberConfirm = window.confirm("Do you want numbers?");
-  console.log(numberConfirm)
   specialConfirm = window.confirm("Do you want special characters? ex. !@#$%");
-  console.log(specialConfirm)
 
   //if the user answers no to all of the above confirms...
 if (!lowerCaseConfirm && !upperCaseConfirm && !numberConfirm && !specialConfirm) {
-  //...tell them they have to pick at least one, and ask them again
+  //...tell them they have to pick at least one and kill the function
   window.alert("You have to select at least one type of character to generate a password.");
-  characterSelect();
+  writePassword();
 }
 
 //otherwise, it's time to generate a password for them
 else {
-passwordText ();
-}
-};
-
-passwordText = function() {
-
-  document.querySelector("#password");
+  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  
-  password = function () {
-  if (lowerCaseConfirm, upperCaseConfirm, numberConfirm, specialConfirm) {
-
-
-  };
+}
 };
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-}

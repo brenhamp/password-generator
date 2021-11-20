@@ -93,13 +93,6 @@ passwordText = function() {
   document.querySelector("#password");
 
   passwordText.value = password;
-  
-  password = function () {
-  if (lowerCaseConfirm, upperCaseConfirm, numberConfirm, specialConfirm) {
-
-
-  };
 };
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-}

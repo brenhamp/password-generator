@@ -1,8 +1,4 @@
 // Assignment code here
-var lowerCaseConfirm
-var upperCaseConfirm
-var numberConfirm
-var specialConfirm
 
 //lowercase array
 lowerCaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -67,13 +63,11 @@ else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null 
 characterSelect = function () {
 //user now must confirm what types of characters they want
   lowerCaseConfirm = window.confirm("Do you want lowercase characters?");
-  console.log(lowerCaseConfirm)
   upperCaseConfirm = window.confirm("Do you want UPPERCASE characters?");
-  console.log(upperCaseConfirm)
   numberConfirm = window.confirm("Do you want numbers?");
-  console.log(numberConfirm)
   specialConfirm = window.confirm("Do you want special characters? ex. !@#$%");
-  console.log(specialConfirm)
+  function selectedChars (lowercaseConfirm, upperCaseConfirm, numberConfirm, specialConfirm);
+  console.log(selectedChars);
 
   //if the user answers no to all of the above confirms...
 if (!lowerCaseConfirm && !upperCaseConfirm && !numberConfirm && !specialConfirm) {
@@ -93,13 +87,6 @@ passwordText = function() {
   document.querySelector("#password");
 
   passwordText.value = password;
-  
-  password = function () {
-  if (lowerCaseConfirm, upperCaseConfirm, numberConfirm, specialConfirm) {
-
-
-  };
 };
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-}
