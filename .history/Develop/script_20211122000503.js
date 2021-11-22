@@ -11,16 +11,16 @@ var allowedArray = [];
 var passArray = [];
 
 //lowercase array
-var lowercaseChars = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+var lowercaseChars = ["abcdefghijklmnopqrstuvwxyz"]
 
 //UPPERCASE array
-var uppercaseChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var uppercaseChars = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
 //numbers array
-var numberChars = ["1","2","3","4","5","6","7","8","9","0"]
+var numberChars = ["1234567890"]
 
 //special characters array
-var specialChars = [" ", "!", "”", "“", "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", ,"|", ",", "}","~"]
+var specialChars = [" !”“#$%&'()*+-./:;<=>?@[\\]^_`{|}~"]
 
 
 
@@ -113,7 +113,7 @@ console.log(allowedArray);
 
 for (var i=0; i < passwordLength; i++) {
 
-  passArray.push (allowedArray[Math.floor(Math.random() * allowedArray.length)]);
+  passArray.push (allowedArray[Math.floor(math.random() * allowedArray.length)]);
 }
 
 return passArray.join("");

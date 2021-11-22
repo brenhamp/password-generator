@@ -1,31 +1,31 @@
 // Assignment code here
-var lowercaseConfirm=true;
-var upperCaseConfirm=true;
-var numberConfirm=true;
-var specialConfirm=true;
-var allowedChars = [];
-var charSet = [];
-var passwordLength = 1;
-var password = "";
-var allowedArray = [];
-var passArray = [];
+ lowercaseConfirm=true;
+ upperCaseConfirm=true;
+ numberConfirm=true;
+ specialConfirm=true;
+allowedChars = [];
+charSet = [];
+passwordLength = 1;
+password = "";
+allowedArray = [];
+passArray = [];
 
 //lowercase array
-var lowercaseChars = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+lowercaseChars = ["abcdefghijklmnopqrstuvwxyz"]
 
 //UPPERCASE array
-var uppercaseChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+uppercaseChars = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
 //numbers array
-var numberChars = ["1","2","3","4","5","6","7","8","9","0"]
+numberChars = ["1234567890"]
 
 //special characters array
-var specialChars = [" ", "!", "”", "“", "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", ,"|", ",", "}","~"]
+specialChars = [" !”“#$%&'()*+-./:;<=>?@[\\]^_`{|}~"]
 
 
 
 
-function writePassword() {
+function getPasswordLength() {
   
 
 //ask for password length
@@ -41,7 +41,7 @@ if (passwordLength >= 8 && passwordLength <= 128){
 //if input is not a number, inform user and return to first prompt
 else if (isNaN(passwordLength) == true && passwordLength !== 0) {
   window.alert("Error! Please type numbers only.") 
-  writePassword();
+  getPasswordLength();
 }
 
 //make sure that if cancel button is clicked, stop prompts
@@ -54,20 +54,20 @@ else if (passwordLength == null && passwordLength == "") {
 else if (passwordLength == "") {
   console.log(passwordLength);
   window.alert("Error! You didn't enter anything.") 
-  writePassword();
+  getPasswordLength();
 }
 
 //if string contains spaces, inform and restart
 else if (/\s+/.test(passwordLength)) {
   window.alert ("Error! Do not use spaces.") 
-  writePassword();
+  getPasswordLength();
 }
 
 //if length chosen is too big or too small, inform user and return them to the first prompt
 else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null && passwordLength !== 0 || passwordLength > 128 && passwordLength !== "" && passwordLength !== null && passwordLength !== 0) {
   console.log(passwordLength)
   window.alert("Error! Number is too large or too small.") 
-  writePassword();
+  getPasswordLength();
 }
 };
 
@@ -113,7 +113,7 @@ console.log(allowedArray);
 
 for (var i=0; i < passwordLength; i++) {
 
-  passArray.push (allowedArray[Math.floor(Math.random() * allowedArray.length)]);
+  passArray.push (allowedArray[Math.floor(math.random() * allowedArray.length)]);
 }
 
 return passArray.join("");
@@ -125,8 +125,8 @@ return passArray.join("");
 
 };
 
-function generatePassword() {
-  var password = writePassword();
+function writePassword() {
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
