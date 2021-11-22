@@ -4,6 +4,7 @@ var generateBtn = document.querySelector("#generate");
 // Assignment code here
 function generatePassword() {
 
+
 var lowercaseConfirm=true;
 var upperCaseConfirm=true;
 var numberConfirm=true;
@@ -12,8 +13,6 @@ var allowedChars = [];
 var charSet = [];
 var passwordLength = 1;
 var password = "";
-var allowedArray = [];
-var passArray = [];
 
 
 //lowercase array
@@ -28,12 +27,22 @@ var numberChars = ["1","2","3","4","5","6","7","8","9","0"]
 //special characters array
 var specialChars = [" ", "!", "”", "“", "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", ,"|", ",", "}","~"]
 
+
+
+
+
+  
+
 //ask for password length
 var passwordLength = window.prompt("Enter desired password length between 8-128 (inclusive)");
 
 //if input is valid, log and proceed
 if (passwordLength >= 8 && passwordLength <= 128){
   console.log(passwordLength);
+
+
+var allowedArray = [];
+var passArray = [];
 
 //user now must confirm what types of characters they want
 lowercaseConfirm = window.confirm("Do you want lowercase characters?");
@@ -45,7 +54,6 @@ console.log(numberConfirm)
 specialConfirm = window.confirm("Do you want special characters? ex. !@#$%");
 console.log(specialConfirm)
 
-//add the ones the user added "yes" to, to an array
 if (lowercaseConfirm == true) {
 allowedArray = allowedArray.concat(lowercaseChars)
 
@@ -65,21 +73,33 @@ allowedArray = allowedArray.concat(specialChars)
 
 console.log(allowedArray);
 
-//use math to randomly generate a password with the above parameters
 for (var i=0; i < passwordLength; i++) {
 
-  passArray.push (allowedArray[Math.floor(Math.random() * allowedArray.length)]);
-  }
-  
-  return passArray.join("");
+passArray.push (allowedArray[Math.floor(Math.random() * allowedArray.length)]);
+}
+
+return passArray.join("");
+
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
 
 };
-
 //if the user answers no to all of the above confirms...
 if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm) {
 //...tell them they have to pick at least one, and ask them again
 window.alert("You have to select at least one type of character to generate a password.");
 }
+
+//all 4 character types
+
+
+
 
 //if input is not a number, inform user and return to first prompt
 if (isNaN(passwordLength) == true && passwordLength !== 0) {
@@ -112,14 +132,19 @@ else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null 
   window.alert("Error! Number is too large or too small.") 
   writePassword();
 }
+
+
+
+
+
+
+
 }
 
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-}
+
+
+
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
