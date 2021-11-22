@@ -5,9 +5,8 @@
  specialConfirm=true;
 allowedChars = [];
 charSet = [];
-passwordLength = 1;
-password = "";
-allowedArray = [];
+ var passwordLength;
+ var password = generatePassword();
 
 //lowercase array
 lowercaseChars = ["abcdefghijklmnopqrstuvwxyz"]
@@ -34,7 +33,7 @@ var passwordLength = window.prompt("Enter desired password length between 8-128 
 if (passwordLength >= 8 && passwordLength <= 128){
   console.log(passwordLength);
   characterSelect ();
-  generatePassword ();
+  console.log(password);
 }
 
 //if input is not a number, inform user and return to first prompt
@@ -92,54 +91,51 @@ if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm)
 //all 4 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + numberChars + specialChars)
- for (i = 0; i < passwordLength; i++) {
-  let char = Math.floor(Math.random() * j.length);
-  password += j.charAt(character, character + 1);
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, numberChars, specialChars)
 }
 
 //3 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + numberChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, numberChars)
 }
 
 else if (lowercaseConfirm && uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, specialChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + numberChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, numberChars, specialChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + numberChars + specialChars)
+ charSet = allowedChars.concat(uppercaseChars, numberChars, specialChars)
 }
 
 //2 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && !numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + numberChars)
+ charSet = allowedChars.concat(lowercaseChars, numberChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + numberChars)
+ charSet = allowedChars.concat(uppercaseChars, numberChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, specialChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + specialChars)
+ charSet = allowedChars.concat(uppercaseChars, specialChars)
 }
 
 else if (!lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(numberChars + specialChars)
+ charSet = allowedChars.concat(numberChars, specialChars)
 }
 
 //1 character type
@@ -163,41 +159,41 @@ else {
 console.log(charSet);
 
 
+};
 
-  
-  
+function generatePassword() {
 
-  
-
-  password = charSet[Math.floor(Math.random * charset.length)];
-
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+    for(var i = 0; i < passwordLength; i++) {
+    password = charSet[Math.floor(Math.random() * charSet.length)];
+  };
 
   
 
 };
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
 writePassword = function () {
 
   getPasswordLength ();
 
+  generatePassword();
+
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = JSON.stringify(password);
+
+
+
 };
 
-function generatePassword() {
- 
 
 
 
 
 
-}
 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

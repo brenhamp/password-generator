@@ -1,25 +1,24 @@
 // Assignment code here
- lowercaseConfirm=true;
- upperCaseConfirm=true;
- numberConfirm=true;
- specialConfirm=true;
-allowedChars = [];
-charSet = [];
-passwordLength = 1;
-password = "";
-allowedArray = [];
+var lowercaseConfirm;
+var upperCaseConfirm;
+var numberConfirm;
+var specialConfirm;
+var allowedChars = [];
+var charSet = [];
+var passwordLength;
+var password = "";
 
 //lowercase array
-lowercaseChars = ["abcdefghijklmnopqrstuvwxyz"]
+var lowercaseChars = ["abcdefghijklmnopqrstuvwxyz"]
 
 //UPPERCASE array
-uppercaseChars = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+var uppercaseChars = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
 //numbers array
-numberChars = ["1234567890"]
+var numberChars = ["1234567890"]
 
 //special characters array
-specialChars = [" !”“#$%&'()*+-./:;<=>?@[\\]^_`{|}~"]
+var specialChars = [" !”“#$%&'()*+-./:;<=>?@[\\]^_`{|}~"]
 
 
 
@@ -34,7 +33,6 @@ var passwordLength = window.prompt("Enter desired password length between 8-128 
 if (passwordLength >= 8 && passwordLength <= 128){
   console.log(passwordLength);
   characterSelect ();
-  generatePassword ();
 }
 
 //if input is not a number, inform user and return to first prompt
@@ -73,6 +71,7 @@ else if (passwordLength < 8 && passwordLength !== "" && passwordLength !== null 
 
 characterSelect = function () {
 
+  var password = "";
 //user now must confirm what types of characters they want
   lowercaseConfirm = window.confirm("Do you want lowercase characters?");
   console.log(lowercaseConfirm)
@@ -92,54 +91,51 @@ if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm)
 //all 4 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + numberChars + specialChars)
- for (i = 0; i < passwordLength; i++) {
-  let char = Math.floor(Math.random() * j.length);
-  password += j.charAt(character, character + 1);
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, numberChars, specialChars)
 }
 
 //3 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + numberChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, numberChars)
 }
 
 else if (lowercaseConfirm && uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars, specialChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + numberChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, numberChars, specialChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + numberChars + specialChars)
+ charSet = allowedChars.concat(uppercaseChars, numberChars, specialChars)
 }
 
 //2 character types
 
 else if (lowercaseConfirm && uppercaseConfirm && !numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + uppercaseChars)
+ charSet = allowedChars.concat(lowercaseChars, uppercaseChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + numberChars)
+ charSet = allowedChars.concat(lowercaseChars, numberChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && !specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + numberChars)
+ charSet = allowedChars.concat(uppercaseChars, numberChars)
 }
 
 else if (lowercaseConfirm && !uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(lowercaseChars + specialChars)
+ charSet = allowedChars.concat(lowercaseChars, specialChars)
 }
 
 else if (!lowercaseConfirm && uppercaseConfirm && !numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(uppercaseChars + specialChars)
+ charSet = allowedChars.concat(uppercaseChars, specialChars)
 }
 
 else if (!lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm) {
- charSet = allowedChars.concat(numberChars + specialChars)
+ charSet = allowedChars.concat(numberChars, specialChars)
 }
 
 //1 character type
@@ -160,44 +156,37 @@ else {
  charSet = allowedChars.concat(specialChars)
 }
 
-console.log(charSet);
+console.log(charSet); 
 
+    for(var i = 0; i < passwordLength; i++) {
+    password += charSet[Math.floor(Math.random() * charSet.length)];    
 
+  };
 
-  
-  
+    return password;
 
-  
-
-  password = charSet[Math.floor(Math.random * charset.length)];
-
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-
-  
 
 };
-
-writePassword = function () {
-
-  getPasswordLength ();
-
-};
-
-function generatePassword() {
- 
-
-
-
-
-
-}
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+writePassword = function () {
+
+  getPasswordLength();
+
+  document.getElementById("password").innerHTML = password;
+
+
+
+};
+
+
+
+
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

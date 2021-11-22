@@ -93,9 +93,6 @@ if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm)
 
 else if (lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
  charSet = allowedChars.concat(lowercaseChars + uppercaseChars + numberChars + specialChars)
- for (i = 0; i < passwordLength; i++) {
-  let char = Math.floor(Math.random() * j.length);
-  password += j.charAt(character, character + 1);
 }
 
 //3 character types
@@ -164,12 +161,17 @@ console.log(charSet);
 
 
 
-  
-  
+    for(var i = 0; i < passwordLength; i++) {
+       var pwd = charSet[Math.random()*charSet.length];
+       
+  }
 
   
-
-  password = charSet[Math.floor(Math.random * charset.length)];
+    for(var i = 0; i < passwordLength; i++) {
+       var pwd = Math.random()*charSet.length;
+       
+  }
+  password = pwd;
 
   var passwordText = document.querySelector("#password");
 
